@@ -41,6 +41,7 @@ var PageTransitions = (function () {
             $pageTrigger = $(this);
             var is_origin = $('.pt-page-current').hasClass('pt-page-1');
             Animate($pageTrigger);
+            console.log($pageTrigger.context.className)
             updateVisibility($pageTrigger.context.className, is_origin)
         });
     }
@@ -352,93 +353,92 @@ var PageTransitions = (function () {
         var $pageWrapper = $pageTrigger.closest('.pt-wrapper');
         var currentPageIndex = $pageWrapper.data('current'), tempPageIndex,
             $pages = $pageWrapper.children('div.pt-page'),
-            pagesCount = $pages.length,
+            pagesCount = 40, //$pages.length,
             endCurrentPage = false,
             endNextPage = false;
 
+        // Target
         gotoPage = parseInt($pageTrigger.data('goto'));
 
-        // check if 'data-goto' value is greater than total pages inside 'pt-wrapper'
-        if (!(pagesCount < gotoPage)) {
-            
-            tempPageIndex = currentPageIndex;
+        tempPageIndex = currentPageIndex;
 
-            if($pageWrapper.data('isAnimating')) {
-                return false;
-            }
+        if($pageWrapper.data('isAnimating')) {
+            return false;
+        }
 
-            // Setting the isAnimating property to true.
-            $pageWrapper.data('isAnimating', true);
+        // Setting the isAnimating property to true.
+        $pageWrapper.data('isAnimating', true);
 
-            // Current page to be removed.
-            var $currentPage = $pages.eq(currentPageIndex);
+        // Current page to be removed.
+        var $currentPage = $pages.eq(currentPageIndex);
 
-            // Checking gotoPage value and decide what to do
-            // -1 Go to next page
-            // -2 Go to previous page
-            // 0+ Go to custom page number.
-            // NEXT PAGE
-            if (gotoPage == -1) {
+        // Checking gotoPage value and decide what to do
+        // -1 Go to next page
+        // -2 Go to previous page
+        // 0+ Go to custom page number.
+        // NEXT PAGE
+        if (gotoPage == -1) {
 
-                // Incrementing page counter to diplay next page
-                if(currentPageIndex < pagesCount - 1) {
-                    ++currentPageIndex;
-                }
-                else {
-                    currentPageIndex = 0;
-                }
-            }
-            // PREVOUS PAGE
-            else if (gotoPage == -2) {
-                if (currentPageIndex == 0){
-                    currentPageIndex = pagesCount - 1;
-
-                }
-                else if(currentPageIndex <= pagesCount - 1 ) {
-                    --currentPageIndex;
-                }
-                else {
-                    currentPageIndex = 0;
-                }
-
-            }
-            // GOTO PAGE
-            else {
-                currentPageIndex = gotoPage - 1 ;
-            }
-
-            // Check if the current page is same as the next page then do not do the animation
-            // else reset the 'isAnimatiing' flag
-            if (tempPageIndex != currentPageIndex) {
-                $pageWrapper.data('current', currentPageIndex);
-
-                // Next page to be animated.
-                var $nextPage = $pages.eq(currentPageIndex).addClass('pt-page-current');
-
-                $currentPage.addClass(outClass).on(animEndEventName, function() {
-                    $currentPage.off(animEndEventName);
-                    endCurrentPage = true;
-                    if(endNextPage) {
-                        onEndAnimation($pageWrapper, $nextPage, $currentPage);
-                    }
-                });
-
-                $nextPage.addClass(inClass).on(animEndEventName, function() {
-                    $nextPage.off(animEndEventName);
-                    endNextPage = true;
-                    if(endCurrentPage) {
-                        onEndAnimation($pageWrapper, $nextPage, $currentPage);
-                    }
-                });
-
+            // Incrementing page counter to diplay next page
+            if(currentPageIndex < pagesCount - 1) {
+                ++currentPageIndex;
             }
             else {
-                $pageWrapper.data('isAnimating', false);
+                currentPageIndex = 0;
+            }
+        }
+        // PREVOUS PAGE
+        else if (gotoPage == -2) {
+            if (currentPageIndex == 0){
+                currentPageIndex = pagesCount - 1;
+
+            }
+            else if(currentPageIndex <= pagesCount - 1 ) {
+                --currentPageIndex;
+            }
+            else {
+                currentPageIndex = 0;
             }
 
         }
+        // GOTO PAGE
         else {
-            alert("Transition.js : Invalid 'data-goto' attribute configuration.");
+            for (var i = 0; i < $pages.length; i++) {
+                var pageID = parseInt($pages[i].className.split(' ')[1].split('-')[2]);
+                if (pageID === gotoPage) {
+                    currentPageIndex = i;
+                    break
+                }
+            }
+        }
+
+        // Check if the current page is same as the next page then do not do the animation
+        // else reset the 'isAnimatiing' flag
+        if (tempPageIndex != currentPageIndex) {
+            $pageWrapper.data('current', currentPageIndex);
+            
+            //Next page to be animated.
+            var $nextPage = $pages.eq(currentPageIndex).addClass('pt-page-current');
+
+            $currentPage.addClass(outClass).on(animEndEventName, function() {
+                $currentPage.off(animEndEventName);
+                endCurrentPage = true;
+                if(endNextPage) {
+                    onEndAnimation($pageWrapper, $nextPage, $currentPage);
+                }
+            });
+
+            $nextPage.addClass(inClass).on(animEndEventName, function() {
+                $nextPage.off(animEndEventName);
+                endNextPage = true;
+                if(endCurrentPage) {
+                    onEndAnimation($pageWrapper, $nextPage, $currentPage);
+                }
+            });
+
+        }
+        else {
+            $pageWrapper.data('isAnimating', false);
         }
 
         // Check if the animation is supported by browser and reset the pages.

@@ -136,28 +136,32 @@
 .pt-trigger-container .arrow-buttons .down img {
   transform: rotate(180deg);
 }
+.pt-trigger-container .arrow-buttons #next,
+.pt-trigger-container .arrow-buttons #prev {
+  visibility: hidden;
+}
 .page-content {
   left: 40%;
   top: 30%;
   position: fixed;
   width: 20em;
 }
-.pt-page-2 {
+.pt-page-1 {
   background-image: url('../images/TurkishMarbledPaper.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }
-.pt-page-2 .header {
+.pt-page-1 .header {
   text-align: center;
   margin-top: 5em;
 }
-.pt-page-2 .header h1 {
+.pt-page-1 .header h1 {
   color: #fff;
   font-size: 48px;
   font-family: 'Shift', sans-serif;
   font-weight: bold;
 }
-.pt-page-2 .header p {
+.pt-page-1 .header p {
   font-size: 20px;
   color: #fff;
 }
