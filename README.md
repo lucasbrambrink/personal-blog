@@ -1,2 +1,2 @@
-# personal-blog
-Blog to share coding interests, passions, etc.
+# Blog
+Django powered personal blog to share coding interests, passions, etc.
