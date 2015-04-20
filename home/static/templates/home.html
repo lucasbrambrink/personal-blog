@@ -10,21 +10,28 @@
     <div class="pt-wrapper">
         <div class="pt-trigger-container">
             <div class="arrow-buttons">
-                {#  HOME TRIGGER  #}
-                <div class="top pt-trigger" data-animation="4" data-goto="2">
+                {#  HOME TRIGGERS  #}
+                <div class="top pt-trigger" data-animation="4" data-goto="1">
                     <img src="{% static 'home/images/arrow.ico' %}"/>
                     <h1 class="transition-link home">Home</h1>
                 </div>
+                <div class="left pt-trigger" data-animation="2" data-goto="1">
+                    <img src="{% static 'home/images/arrow.ico' %}"/>
+                    <h1 class="transition-link home">Home</h1>
+                </div>
+                <div class="right pt-trigger" data-animation="1" data-goto="1">
+                    <img src="{% static 'home/images/arrow.ico' %}"/>
+                    <h1 class="transition-link home">Home</h1>
+                </div>
+
                 {#  ALGORITHMS TRIGGER  #}
                 <div class="right pt-trigger" data-animation="1" data-goto="10">
                     <h1 class="transition-link to-page">Algorithms</h1>
-                    <h1 class="transition-link home">Home</h1>
                     <img src="{% static 'home/images/arrow.ico' %}"/>
                 </div>
                 {#  POSTS TRIGGER  #}
                 <div class="left pt-trigger" data-animation="2" data-goto="20">
                     <h1 class="transition-link to-page">Posts</h1>
-                    <h1 class="transition-link home">Home</h1>
                     <img src="{% static 'home/images/arrow.ico' %}"/>
                 </div>
                 {#  PERSONAL TRIGGER  #}
@@ -34,11 +41,11 @@
                 </div>
 
                 {#  SCROLL TRIGGERS  #}
-                <div class="left pt-trigger" id="prev" data-animation="3" data-goto="4">
+                <div class="left pt-trigger" id="prev" data-animation="2" data-goto="-2">
                     <h1 class="transition-link to-page">Prev</h1>
                     <img src="{% static 'home/images/arrow.ico' %}"/>
                 </div>
-                <div class="right pt-trigger" id="next" data-animation="3" data-goto="4">
+                <div class="right pt-trigger" id="next" data-animation="3" data-goto="-1">
                     <h1 class="transition-link to-page">Next</h1>
                     <img src="{% static 'home/images/arrow.ico' %}"/>
                 </div>
