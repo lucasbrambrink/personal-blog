@@ -39,10 +39,8 @@ var PageTransitions = (function () {
         // Adding click event to .pt-trigger
         $('.pt-trigger').click(function() {
             $pageTrigger = $(this);
-            var is_origin = $('.pt-page-current').hasClass('pt-page-1');
             Animate($pageTrigger);
-            console.log($pageTrigger.context.className)
-            updateVisibility($pageTrigger.context.className, is_origin)
+            updateVisibility($pageTrigger)
         });
     }
 
@@ -416,7 +414,7 @@ var PageTransitions = (function () {
         // else reset the 'isAnimatiing' flag
         if (tempPageIndex != currentPageIndex) {
             $pageWrapper.data('current', currentPageIndex);
-            
+
             //Next page to be animated.
             var $nextPage = $pages.eq(currentPageIndex).addClass('pt-page-current');
 
@@ -458,26 +456,69 @@ var PageTransitions = (function () {
         $nextPage.attr('class', $nextPage.data('originalClassList') + ' pt-page-current');
     }
 
-    function updateVisibility(className, is_origin) {
-        var directionsMap = {'top': 'down', 'left': 'right', 'right': 'left', 'down': 'top'};
-        var clicked = className.split(' ')[0];
-        if (!is_origin){
-            landingVisbility()
-        } else {
-            $('.pt-trigger').each(function () {
-                var opposite = directionsMap[this.className.split(' ')[0]];
-                if (opposite === clicked) {
-                    $(this).css('visibility', 'visible');
-                    $(this).find('h1.transition-link.home').css('visibility', 'visible');
-                    $(this).find('h1.transition-link.to-page').css('visibility', 'hidden');
-                } else {
-                    $(this).css('visibility', 'hidden')
-                    $(this).find('h1.transition-link.home').css('visibility', 'hidden');
-                    $(this).find('h1.transition-link.to-page').css('visibility', 'hidden');
-                }
-            });
+    function updateVisibility($pageTrigger) {
+        var gotoPage = parseInt($pageTrigger.data('goto'));
+
+        if (gotoPage === 1) {
+            landingVisbility();
+        } else if (gotoPage === 10 || gotoPage === 20) {
+            upDownScroll(gotoPage);
+        } else if (gotoPage === 30) {
+            sidewayScroll();
         }
     }
+
+    function upDownScroll(gotoPage) {
+        $('.pt-trigger').each(function () {
+            var homeIsLeft = gotoPage < 20;
+            var indicator = this.className.split(' ')[1];
+            if (indicator === 'next' || indicator === 'prev') {
+                $(this).css('visibility', 'visible')
+                $(this).css('visibility', 'visible');
+                $(this).find('h1.transition-link.home').css('visibility', 'visible');
+                $(this).find('h1.transition-link.to-page').css('visibility', 'hidden');
+            } else if (indicator === '{
+
+            }
+            console.log(this.className)
+            //    var opposite = directionsMap[this.className.split(' ')[0]];
+            //    if (opposite === clicked) {
+            //        $(this).css('visibility', 'visible');
+            //        $(this).find('h1.transition-link.home').css('visibility', 'visible');
+            //        $(this).find('h1.transition-link.to-page').css('visibility', 'hidden');
+            //    } else {
+            //        $(this).css('visibility', 'hidden')
+            //        $(this).find('h1.transition-link.home').css('visibility', 'hidden');
+            //        $(this).find('h1.transition-link.to-page').css('visibility', 'hidden');
+            //    }
+            //});
+    })}
+
+    function sidewayScroll() {
+    }
+
+
+
+    //    var directionsMap = {'top': 'down', 'left': 'right', 'right': 'left', 'down': 'top'};
+    //    var clicked = className.split(' ')[0];
+    //    console.log(clicked);
+    //    if (is_origin){
+    //        landingVisbility()
+    //    } else {
+    //        $('.pt-trigger').each(function () {
+    //            var opposite = directionsMap[this.className.split(' ')[0]];
+    //            if (opposite === clicked) {
+    //                $(this).css('visibility', 'visible');
+    //                $(this).find('h1.transition-link.home').css('visibility', 'visible');
+    //                $(this).find('h1.transition-link.to-page').css('visibility', 'hidden');
+    //            } else {
+    //                $(this).css('visibility', 'hidden')
+    //                $(this).find('h1.transition-link.home').css('visibility', 'hidden');
+    //                $(this).find('h1.transition-link.to-page').css('visibility', 'hidden');
+    //            }
+    //        });
+    //    }
+    //}
 
     function landingVisbility() {
         $('.pt-trigger').each(function(){
