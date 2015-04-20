@@ -1,3 +1,60 @@
+# Local Files #
+###############
+hours.md
+.idea/
+db.sqlite3
+root/
+pip-selfcheck.json
+pdf_files/
+heroku_config_script.sh
+media/*.pdf
+
+
+.Python
+bin/
+include/
+lib/
+
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -10,10 +67,8 @@ __pycache__/
 env/
 build/
 develop-eggs/
-dist/
 downloads/
 eggs/
-.eggs/
 lib/
 lib64/
 parts/
@@ -29,6 +84,7 @@ var/
 *.manifest
 *.spec
 
+
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
@@ -37,11 +93,9 @@ pip-delete-this-directory.txt
 htmlcov/
 .tox/
 .coverage
-.coverage.*
 .cache
 nosetests.xml
 coverage.xml
-*,cover
 
 # Translations
 *.mo
@@ -55,3 +109,4 @@ docs/_build/
 
 # PyBuilder
 target/
+
