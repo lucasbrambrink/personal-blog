@@ -10,69 +10,108 @@
     <div class="pt-wrapper">
         <div class="pt-trigger-container">
             <div class="arrow-buttons">
+                {#  HOME TRIGGER  #}
                 <div class="top pt-trigger" data-animation="4" data-goto="2">
                     <img src="{% static 'home/images/arrow.ico' %}"/>
                     <h1 class="transition-link home">Home</h1>
                 </div>
-                <div class="right pt-trigger" data-animation="1" data-goto="-1">
-                    <h1 class="transition-link to-page">About</h1>
+                {#  ALGORITHMS TRIGGER  #}
+                <div class="right pt-trigger" data-animation="1" data-goto="10">
+                    <h1 class="transition-link to-page">Algorithms</h1>
                     <h1 class="transition-link home">Home</h1>
                     <img src="{% static 'home/images/arrow.ico' %}"/>
                 </div>
-                <div class="left pt-trigger" data-animation="2" data-goto="-2">
-                    <h1 class="transition-link to-page">Research</h1>
+                {#  POSTS TRIGGER  #}
+                <div class="left pt-trigger" data-animation="2" data-goto="20">
+                    <h1 class="transition-link to-page">Posts</h1>
                     <h1 class="transition-link home">Home</h1>
                     <img src="{% static 'home/images/arrow.ico' %}"/>
                 </div>
-                <div class="down pt-trigger" data-animation="3" data-goto="4">
+                {#  PERSONAL TRIGGER  #}
+                <div class="down pt-trigger" data-animation="3" data-goto="30">
                     <h1 class="transition-link to-page">Personal</h1>
                     <img src="{% static 'home/images/arrow.ico' %}"/>
                 </div>
+
+                {#  SCROLL TRIGGERS  #}
+                <div class="left pt-trigger" id="prev" data-animation="3" data-goto="4">
+                    <h1 class="transition-link to-page">Prev</h1>
+                    <img src="{% static 'home/images/arrow.ico' %}"/>
+                </div>
+                <div class="right pt-trigger" id="next" data-animation="3" data-goto="4">
+                    <h1 class="transition-link to-page">Next</h1>
+                    <img src="{% static 'home/images/arrow.ico' %}"/>
+                </div>
             </div>
         </div>
 
+        {#  LANDING PAGE  #}
         <div class="pt-page pt-page-1">
-            <!--<img src='http://apod.nasa.gov/apod/image/1409/cocoonIC5146pelliccia.jpg' style="width: 300px; height: 300px;">-->
-            <div class="page-content">
-                <h3>Research</h3>
-                <p>I don't do research currently. But would love to.</p>
-    <!--<p><a href="#">More about what got me where I am</a></p>-->
-            </div>
-        </div>
-
-        <div class="pt-page pt-page-2">
             <div class="header">
-                <h1>Lucas Brambrink</h1><br><br><br>
+                <h1>Lucas Brambrink</h1>
                 <p>python developer</p>
                 <p>New York City</p>
             </div>
         </div>
 
-        <div class="pt-page pt-page-3">
-            <!--<img src='http://apod.nasa.gov/apod/image/1104/M101HST-GendlerM.jpg' style="width: 300px; height: 300px;">-->
+
+        {#  ALGORITHMS PAGES 10 - 19      #}
+        <div class="pt-page pt-page-10">
             <div class="page-content">
-                <h3>About</h3>
+                <h3>Algorithms</h3>
+                <p>One of my hobbies is solving algorithm challenges. I simply adore this form of puzzling and problem solving.
+                Solving ever more difficult problems is what made me fall in love with programming.</p>
+
+                <p>As such, I wanted to share a few examples that I think are worth noting, perhaps one can draw
+                a lesson or two from them.</p>
+            </div>
+        </div>
+
+
+        <div class="pt-page pt-page-11">
+            <div class="page-content">
+                <h3>ALGORITHM 1</h3>
+                <div>HELLO</div>
+            </div>
+        </div>
+
+        <div class="pt-page pt-page-20">
+            <div class="page-content">
+                <h3>Blog Posts 1</h3>
+                <div>HELLO</div>
+            </div>
+        </div>
+
+        <div class="pt-page pt-page-21">
+            <div class="page-content">
+                <h3>Blog Post 2</h3>
+                <div>HELLO</div>
+            </div>
+        </div>
+
+
+
+        {#  BLOG POSTS  #}
+        <div class="pt-page pt-page-31">
+            <div class="page-content">
+                <h3>Blog Post 3</h3>
+                <div>HELLO</div>
+            </div>
+        </div>
+
+
+        {#  PERSONAL STUFF  #}
+        <div class="pt-page pt-page-30">
+            <div class="page-content">
+                <h3>Personal</h3>
                 <p> Born in Wiesbaden, Germany. Moved to Portland OR age 14.
                     Attended Johns Hopkins University in Baltimore,
                   MD (2008-2012). Did Post-bacc work in physics at University of Oregon.
                 Attended Byte Academy, financial coding bootcamp in NYC. Worked at startup
                 in event ticketing market. </p>
             </div>
-            <!--<p><a href="#">In depth descriptions</a></p>-->
         </div>
 
-        <div class="pt-page pt-page-4">
-            <!--<img src="http://i.imgur.com/DEo5qUE.jpg" style="width: 300px; height: 300px;">-->
-            <div class="page-content">
-                <h3>Personal</h3>
-                <p>This is sort of a repository for things I do with
-                  my spare time and/or find cool and want to
-                  share. Art, science, succulents, food, running, you
-                  name it.</p>
-            </div>
-            <!--<p><a href="#">More cool stuff</a></p>-->
-        </div>
-            <!-- ... -->
     </div>
 {% endblock %}
 
