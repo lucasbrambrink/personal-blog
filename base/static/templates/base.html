@@ -8,8 +8,8 @@
     <title>Lucas Brambrink</title>
 
     <!-- Base Stylesheets -->
-        <link rel="stylesheet" type="text/css" href="{% static 'base/bower_components/bootstrap/dist/css/bootstrap.css' %}" />
-        <link rel="stylesheet" type="text/css" href="{% static 'base/bower_components/transition.js/css/transition-animations.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'base/bootstrap/dist/css/bootstrap.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'base/transition.js/css/transition-animations.css' %}" />
 
     <!-- Site Stylesheets -->
         {% block stylesheets %}
@@ -23,10 +23,10 @@
     {% endblock %}
 
 <!-- Base Scripts -->
-    <script type="text/javascript" src="{% static 'base/bower_components/jquery/dist/jquery.js' %}"></script>
-    <script type="text/javascript" src="{% static 'base/bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'base/jquery/dist/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'base/bootstrap/dist/js/bootstrap.min.js' %}"></script>
 
-    <script type="text/javascript" src="{% static 'base/bower_components/transition.js/js/transition.js' %}"></script>
+    <script type="text/javascript" src="{% static 'base/transition.js/js/transition.js' %}"></script>
 <!-- Site Scripts -->
     {% block scripts %}
     {% endblock %}

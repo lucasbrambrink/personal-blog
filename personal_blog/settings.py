@@ -76,6 +76,7 @@ USE_TZ = True
 
 ###---< Static files >---###
 BASE_DIR = os.path.join(PROJECT_DIR, 'base')
+HOME_DIR = os.path.join(PROJECT_DIR, 'home')
 
 STATIC_URL = '/static/'
 
@@ -84,10 +85,12 @@ MEDIA_ROOT = BASE_DIR + '/media/'
 
 STATICFILES_DIRS = (
     ('base', os.path.join(BASE_DIR, 'static/bower_components')),
+    ('home', os.path.join(HOME_DIR, 'static'))
 )
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'static/templates'),
+    os.path.join(HOME_DIR, 'static/templates'),
 )
 
 
