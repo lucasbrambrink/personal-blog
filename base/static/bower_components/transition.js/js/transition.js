@@ -457,85 +457,55 @@ var PageTransitions = (function () {
     }
 
     function updateVisibility($pageTrigger) {
-        var gotoPage = parseInt($pageTrigger.data('goto'));
-
-        if (gotoPage === 1) {
+        var goToPage = parseInt($pageTrigger.data('goto'));
+        if (goToPage === 1) {
             landingVisbility();
-        } else if (gotoPage === 10 || gotoPage === 20) {
-            upDownScroll(gotoPage);
-        } else if (gotoPage === 30) {
-            sidewayScroll();
+        } else if (goToPage === 10 || goToPage === 20) {
+            scrollingVisibility('vertical', goToPage);
+        } else if (goToPage === 30) {
+            scrollingVisibility('horizontal', goToPage);
         }
     }
 
-    function upDownScroll(gotoPage) {
-        $('.pt-trigger').each(function () {
-            var homeIsLeft = gotoPage < 20;
-            var indicator = this.className.split(' ')[1];
-            if (indicator === 'next' || indicator === 'prev') {
-                $(this).css('visibility', 'visible')
-                $(this).css('visibility', 'visible');
-                $(this).find('h1.transition-link.home').css('visibility', 'visible');
-                $(this).find('h1.transition-link.to-page').css('visibility', 'hidden');
-            } else if (indicator === '{
-
-            }
-            console.log(this.className)
-            //    var opposite = directionsMap[this.className.split(' ')[0]];
-            //    if (opposite === clicked) {
-            //        $(this).css('visibility', 'visible');
-            //        $(this).find('h1.transition-link.home').css('visibility', 'visible');
-            //        $(this).find('h1.transition-link.to-page').css('visibility', 'hidden');
-            //    } else {
-            //        $(this).css('visibility', 'hidden')
-            //        $(this).find('h1.transition-link.home').css('visibility', 'hidden');
-            //        $(this).find('h1.transition-link.to-page').css('visibility', 'hidden');
-            //    }
-            //});
-    })}
-
-    function sidewayScroll() {
+    function changeVisibility(elem, visibility) {
+        $(elem).css('visibility', visibility);
+        $(elem).find('h1.transition-link').css('visibility', visibility);
     }
 
-
-
-    //    var directionsMap = {'top': 'down', 'left': 'right', 'right': 'left', 'down': 'top'};
-    //    var clicked = className.split(' ')[0];
-    //    console.log(clicked);
-    //    if (is_origin){
-    //        landingVisbility()
-    //    } else {
-    //        $('.pt-trigger').each(function () {
-    //            var opposite = directionsMap[this.className.split(' ')[0]];
-    //            if (opposite === clicked) {
-    //                $(this).css('visibility', 'visible');
-    //                $(this).find('h1.transition-link.home').css('visibility', 'visible');
-    //                $(this).find('h1.transition-link.to-page').css('visibility', 'hidden');
-    //            } else {
-    //                $(this).css('visibility', 'hidden')
-    //                $(this).find('h1.transition-link.home').css('visibility', 'hidden');
-    //                $(this).find('h1.transition-link.to-page').css('visibility', 'hidden');
-    //            }
-    //        });
-    //    }
-    //}
+    function scrollingVisibility(scrollingDirection, goToPage) {
+        $('.pt-trigger').each(function () {
+            var isVertical = scrollingDirection === 'vertical';
+            var direction = this.className.split(' ')[0];
+            var indicator = this.className.split(' ')[1];
+            if (indicator === 'next' || indicator === 'prev') {
+                if ((!isVertical && (direction === 'right' || direction === 'left'))
+                ||  (isVertical && (direction === 'top' || direction === 'down'))) {
+                    changeVisibility(this, 'visible');
+                }
+            } else if (indicator === 'home') {
+                var homeIsLeft = goToPage < 20;
+                if ((isVertical) &&
+                    ((homeIsLeft && direction === 'left') || (!homeIsLeft && direction === 'right'))
+                    || (!isVertical && direction === 'top')) {
+                    changeVisibility(this, 'visible')
+                }
+            } else {
+                changeVisibility(this, 'hidden');
+            }
+        });
+    }
 
     function landingVisbility() {
         $('.pt-trigger').each(function(){
-            var trigger = this.className.split(' ')[0];
-            if (trigger != 'top'){
-                $(this).css('visibility', 'visible')
-                $(this).find('h1.transition-link.home').css('visibility', 'hidden')
-                $(this).find('h1.transition-link.to-page').css('visibility', 'visible')
-            } else {
-                $(this).css('visibility', 'hidden')
-                $(this).find('h1.transition-link.home').css('visibility', 'hidden');
-            }
-        })
+            var indicator = this.className.split(' ')[1];
+            var visibility = indicator === 'base' ? 'visible' : 'hidden';
+            console.log(indicator, visibility);
+            changeVisibility(this, visibility)
+        });
     }
 
     return {
-        init : init,
+        init : init
     };
 
 })();
