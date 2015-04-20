@@ -1,13 +1,7 @@
 # Local Files #
 ###############
-hours.md
 .idea/
-db.sqlite3
-root/
-pip-selfcheck.json
-pdf_files/
-heroku_config_script.sh
-media/*.pdf
+
 
 
 .Python
