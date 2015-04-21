@@ -40,7 +40,7 @@ var PageTransitions = (function () {
         $('.pt-trigger').click(function() {
             $pageTrigger = $(this);
             Animate($pageTrigger);
-            updateVisibility($pageTrigger)
+            updateVisibility($pageTrigger);
         });
     }
 

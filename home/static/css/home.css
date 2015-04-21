@@ -88,6 +88,9 @@
   margin-left: 0.9em;
   margin-top: 2.3em;
 }
+.pt-trigger-container .arrow-buttons .top img {
+  top: -10%;
+}
 .pt-trigger-container .arrow-buttons .right {
   top: 25%;
   right: 10em;
@@ -96,12 +99,6 @@
   top: 26%;
   right: 2.6em;
   position: fixed;
-}
-.pt-trigger-container .arrow-buttons .right .transition-link.home {
-  top: 26%;
-  right: 2.6em;
-  position: fixed;
-  visibility: hidden;
 }
 .pt-trigger-container .arrow-buttons .right img {
   transform: rotate(90deg);
@@ -114,12 +111,6 @@
   top: 26%;
   left: 2.7em;
   position: fixed;
-}
-.pt-trigger-container .arrow-buttons .left .transition-link.home {
-  top: 26%;
-  left: 2.7em;
-  position: fixed;
-  visibility: hidden;
 }
 .pt-trigger-container .arrow-buttons .left img {
   transform: rotate(-90deg);
@@ -154,20 +145,24 @@
 }
 .pt-page-1 .header {
   text-align: center;
-  margin-top: 5em;
+  margin-top: 16em;
 }
 .pt-page-1 .header h1 {
   color: #fff;
   font-size: 48px;
   font-family: 'Shift', sans-serif;
-  font-weight: bold;
+  margin-bottom: 1em;
 }
 .pt-page-1 .header p {
   font-size: 20px;
   color: #fff;
 }
-.pt-page-10 {
-  background-image: url('http://i.imgur.com/0X2Seqq.jpg');
+.pt-page-10,
+.pt-page-11,
+.pt-page-12,
+.pt-page-13,
+.pt-page-14 {
+  background-image: url('../images/algo-background.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }
