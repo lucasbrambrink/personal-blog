@@ -357,6 +357,18 @@ var PageTransitions = (function () {
 
         // Target
         gotoPage = parseInt($pageTrigger.data('goto'));
+        // Source
+        var sectionContext = $pageTrigger.data('section');
+
+        console.log($pageTrigger.data('section'));
+
+
+        var sourcePage = $pageTrigger.context.className
+        //console.log(sourcePage)
+        //console.log($pages)
+        //console.log(currentPageIndex)
+        //console.log($pages.eq(currentPageIndex));
+
 
         tempPageIndex = currentPageIndex;
 
