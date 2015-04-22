@@ -5,7 +5,7 @@ Django settings for personal_blog project.
 
 import os
 import socket
-DEBUG = False if socket.gethostname() == '192.168.1.2' or socket.gethostname() == 'Lucass-MBP' else True
+DEBUG = True if socket.gethostname()[:7] == '192.168' or socket.gethostname() == 'Lucass-MBP' else False
 
 if DEBUG:  # not-production
     PROJECT_DIR = os.path.dirname(os.path.dirname(__file__))
