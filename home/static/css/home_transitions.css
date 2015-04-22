@@ -59,7 +59,6 @@ body {
     width: 300px;
     z-index: 999999;
     left: 50%;
-    margin-top: 75px;
     -webkit-transform: translateX(-50%);
     -moz-transform: translateX(-50%);
     -ms-transform: translateX(-50%);

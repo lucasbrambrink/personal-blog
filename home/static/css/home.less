@@ -30,33 +30,32 @@
     div { position: absolute; box-shadow: none; }
     img { width: 150px; height: 100px; box-shadow: none; position: fixed; }
 
-    .top { top: -10%; left: 45%; visibility: hidden;
-      h1.transition-link { margin: 0; margin-left: 0.9em; margin-top: 2.3em; }
-      img { top: -10%; }
+    .top { top: -3%; margin-top: 1em; left: 45%; visibility: hidden;
+      h1.transition-link { margin: 0; margin-left: 0.9em; margin-top: 1.8em; }
+      img { top: -3%; }
     }
-    .right { top: 25%; right: 10em;
-      .transition-link { top: 26%; right: 2.6em; position: fixed; }
+    .right { top: 40%; right: 110px;
+      .transition-link { top: 41%; right: 1.7em; position: fixed; }
       img { transform: rotate(90deg); }
     }
-    .left { top: 25%; left: 0;
-      .transition-link { top: 26%; left: 2.7em; position: fixed; }
+    .left { top: 40%; left: -43px;
+      .transition-link { top: 41%; left: 1.7em; position: fixed; }
       img { transform: rotate(-90deg); }
     }
-    .down { top: 73%; left: 45%;
-      h1.transition-link { margin: 0; margin-left: 9px; padding: 0 0 0 0; }
+    .down { top: 90%; left: 45%;
+      h1.transition-link { margin-left: 12px; padding: 0 0 0 0; position: fixed; top: 85%; }
       img { transform: rotate(180deg);}
     }
-    .down.next { top: 80%; }
+//    .top.prev { top: -500px; }
+    .down.next { top: 90%; }
     .next, .prev, .home { visibility: hidden; }
   }
 }
 
 .page-content { left: 40%; top: 30%; position: fixed; width: 80%;}
-.page-content.algo { left: 20%; top: 20%;
+.page-content.algo { left: 20%; top: 12%; width: 60%;
   img { width: 700px; }
 }
-.page-content.algo:nth-child(1) { width: 40%;}
-
 .pt-page-001 {
     background-image: url('http://i.imgur.com/m4lI6NS.jpg');
     background-repeat: no-repeat;
@@ -72,8 +71,47 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+.pt-page-100 { font-family: 'Shift', sans-serif;
+  .page-content { left: 15%; top: 12%; padding: 1em; width: 60%; font-size: 120%;
+    .header { text-align: center; margin-bottom: 2em; }
+    .blurb { width: 60%;}
+    .quote { margin-top: 3em; margin-left: 10em; font-style: italic; font-size: 130%;
+      .name { margin-left: 6em; font-style: normal; font-weight: bold; }
+    }
+  }
+}
 
 .pt-page-200 {
+    background-image: url('http://i.imgur.com/x3DPfaH.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.pt-page-201 {
+    background-image: url('http://i.imgur.com/x3DPfaH.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.pt-page-202 {
+    background-image: url('http://i.imgur.com/x3DPfaH.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.pt-page-203 {
+    background-image: url('http://i.imgur.com/x3DPfaH.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.pt-page-204 {
+    background-image: url('http://i.imgur.com/x3DPfaH.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.pt-page-205 {
     background-image: url('http://i.imgur.com/x3DPfaH.jpg');
     background-repeat: no-repeat;
     background-size: cover;
