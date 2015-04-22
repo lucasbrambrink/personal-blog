@@ -12,14 +12,15 @@ $(document).ready(function() {
     $("body").keydown(function(e) {
         if (!inQueue) {
             if (e.keyCode <= 40 && e.keyCode >= 37) {
-                var direction = directionMap[e.keyCode];
+                var direction = directionMap[e.keyCode],
+                    transition = false;
+
                 var availableTriggers = [];
                 $('.pt-trigger').each(function(){
                     if ($(this).css('visibility') == 'visible') {
                         availableTriggers.push(this.className.split(' ')[0])
                     }
                 });
-                var transition = false;
                 for (var i = 0; i < availableTriggers.length; i++) {
                     if ("." + availableTriggers[i] == direction) {
                         transition = true;
@@ -27,7 +28,11 @@ $(document).ready(function() {
                 }
                 if (transition) {
                     inQueue = true;
-                    $(direction).trigger('click');
+                    $(direction).each(function() {
+                        if ($(this).css('visibility') == 'visible') {
+                            $(this).trigger('click');
+                        }
+                    })
                     setTimeout(function(){ inQueue = false}, 1000);
                 }
             }
