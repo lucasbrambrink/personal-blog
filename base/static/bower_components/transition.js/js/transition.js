@@ -33,7 +33,7 @@ var PageTransitions = (function () {
             var $wrapperDiv = $(this);
             $wrapperDiv.data('current', 0);
             $wrapperDiv.data('isAnimating', false);
-            $wrapperDiv.children('.pt-page').eq(startPageIndex).addClass('pt-page-current');
+            //$wrapperDiv.children('.pt-page').eq(startPageIndex).addClass('pt-page-current');
         });
 
         // Adding click event to .pt-trigger
@@ -76,6 +76,8 @@ var PageTransitions = (function () {
             alert("Transition.js : Invalid 'data-animation' attribute configuration. Animation number should not be greater than 67");
             return false;
         }
+
+        console.log($('.pt-wrapper').children('.pt-page-current'))
 
         switch(selectedAnimNumber) {
             case 1:
@@ -356,22 +358,9 @@ var PageTransitions = (function () {
             endCurrentPage = false,
             endNextPage = false;
 
-        var triggerSection = $pageTrigger.data('section');
-
-        // select Pages within section
-        var properPages = [];
-        for (var i = 0; i < $pages.length; i++) {
-            var page = $pages[i];
-            if ($(page).children('.' + triggerSection).length > 0) {
-                properPages.push(page)
-            }
-        }
-
         // Target
         gotoPage = parseInt($pageTrigger.data('goto'));
 
-        var sourcePage = $('pt-page-current').context.className;
-        console.log(sourcePage);
 
         tempPageIndex = currentPageIndex;
 
@@ -383,49 +372,31 @@ var PageTransitions = (function () {
         $pageWrapper.data('isAnimating', true);
 
         // Current page to be removed.
-        var $currentPage = $pages.eq(currentPageIndex);
+        var realPage = _.find($pages, function(page) {
+            return $(page).hasClass('pt-page-current')
+        });
+        var $currentPage = $(realPage);
 
-        console.log($pageTrigger.context.className)
+        // Get the current page number
+        var currentPageNum = _.find($currentPage.context.className.split(' ')[1].split('-'), function(e) {
+            return !isNaN(e);
+        });
 
-        // Checking gotoPage value and decide what to do
-        // -1 Go to next page
-        // -2 Go to previous page
-        // 0+ Go to custom page number.
-        // NEXT PAGE
-        if (gotoPage == -1) {
-
-            // Incrementing page counter to diplay next page
-            if(currentPageIndex < pagesCount - 1) {
-                ++currentPageIndex;
-            }
-            else {
-                currentPageIndex = 0;
+        // Figure out where to go
+        if (gotoPage === -1) {
+            gotoPage = parseInt(currentPageNum) + 1
+        } else if (gotoPage === -2) {
+            gotoPage = parseInt(currentPageNum) - 1
+        }
+        // Fetch target pages' index & assign as currentPageIndex
+        for (var i = 0; i < $pages.length; i++) {
+            var pageID = parseInt($pages[i].className.split(' ')[1].split('-')[2]);
+            if (pageID === gotoPage) {
+                currentPageIndex = i;
+                break
             }
         }
-        // PREVOUS PAGE
-        else if (gotoPage == -2) {
-            if (currentPageIndex == 0){
-                currentPageIndex = pagesCount - 1;
 
-            }
-            else if(currentPageIndex <= pagesCount - 1 ) {
-                --currentPageIndex;
-            }
-            else {
-                currentPageIndex = 0;
-            }
-
-        }
-        // GOTO PAGE
-        else {
-            for (var i = 0; i < $pages.length; i++) {
-                var pageID = parseInt($pages[i].className.split(' ')[1].split('-')[2]);
-                if (pageID === gotoPage) {
-                    currentPageIndex = i;
-                    break
-                }
-            }
-        }
 
         // Check if the current page is same as the next page then do not do the animation
         // else reset the 'isAnimatiing' flag
@@ -434,7 +405,6 @@ var PageTransitions = (function () {
 
             //Next page to be animated.
             var $nextPage = $pages.eq(currentPageIndex).addClass('pt-page-current');
-
             $currentPage.addClass(outClass).on(animEndEventName, function() {
                 $currentPage.off(animEndEventName);
                 endCurrentPage = true;
@@ -469,7 +439,13 @@ var PageTransitions = (function () {
     }
 
     function resetPage($nextPage, $currentPage) {
-        $currentPage.attr('class', $currentPage.data('originalClassList'));
+        // Make sure we delete current pages
+        var splitClasses = $currentPage.data('originalClassList').split(' ');
+        var strippedClassList = _.filter(splitClasses, function(_class) {
+            return _class != 'pt-page-current';
+        }).join(' ');
+
+        $currentPage.attr('class', strippedClassList);
         $nextPage.attr('class', $nextPage.data('originalClassList') + ' pt-page-current');
     }
 
@@ -529,4 +505,5 @@ var PageTransitions = (function () {
 $(document).ready(function() {
     // initializing page transition.
     PageTransitions.init();
+    $('.pt-page-1').addClass('pt-page-current');
 });
