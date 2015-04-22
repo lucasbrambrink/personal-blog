@@ -141,6 +141,13 @@
   position: fixed;
   width: 20em;
 }
+.page-content.algo {
+  left: 20%;
+  top: 30%;
+}
+.page-content.algo img {
+  width: 600px;
+}
 .pt-page-001 {
   background-image: url('http://i.imgur.com/m4lI6NS.jpg');
   background-repeat: no-repeat;
