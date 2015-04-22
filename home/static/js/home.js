@@ -15,9 +15,13 @@ $(document).ready(function() {
                 var direction = directionMap[e.keyCode],
                     transition = false;
 
-                var availableTriggers = [];
+                var availableTriggers = [],
+                    homeDirection = 'top';
                 $('.pt-trigger').each(function(){
                     if ($(this).css('visibility') == 'visible') {
+                        if (this.className.split(' ')[1] === 'home') {
+                            homeDirection = "." + this.className.split(' ')[0]
+                        }
                         availableTriggers.push(this.className.split(' ')[0])
                     }
                 });
@@ -28,11 +32,12 @@ $(document).ready(function() {
                 }
                 if (transition) {
                     inQueue = true;
-                    $(direction).each(function() {
+                    var identifier = direction == homeDirection ? '.home' : direction;
+                    $(identifier).each(function() {
                         if ($(this).css('visibility') == 'visible') {
                             $(this).trigger('click');
                         }
-                    })
+                    });
                     setTimeout(function(){ inQueue = false}, 1000);
                 }
             }
