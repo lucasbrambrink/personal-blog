@@ -77,8 +77,6 @@ var PageTransitions = (function () {
             return false;
         }
 
-        console.log($('.pt-wrapper').children('.pt-page-current'))
-
         switch(selectedAnimNumber) {
             case 1:
                 inClass = 'pt-page-moveFromRight';
@@ -382,11 +380,48 @@ var PageTransitions = (function () {
             return !isNaN(e);
         });
 
+
         // Figure out where to go
-        if (gotoPage === -1) {
-            gotoPage = parseInt(currentPageNum) + 1
-        } else if (gotoPage === -2) {
-            gotoPage = parseInt(currentPageNum) - 1
+        if (gotoPage === -1) { // Next
+            var sectionID = currentPageNum[0],
+                nextPage = parseInt(currentPageNum) + 1,
+                thisIndex = nextPage.toString().slice(1),
+                sectionOrigin = parseInt(sectionID.toString() + "00");
+
+            // select Pages within section
+            var sectionPagesLength = 0;
+            for (var i = 0; i < $pages.length; i++) {
+                var $page = $($pages[i]);
+                var thisPageNum = _.find($page.context.className.split(' ')[1].split('-'), function(e) {
+                    return !isNaN(e);
+                });
+                if (thisPageNum.toString()[0] === sectionID) {
+                    ++sectionPagesLength
+                }
+            }
+            // assign target Page Id
+            gotoPage = thisIndex < sectionPagesLength ? nextPage : sectionOrigin;
+        } else if (gotoPage === -2) { // Prev
+            var sectionID = currentPageNum[0];
+
+            if (currentPageNum.slice(1) == "00") { // Origin
+                var sectionPagesLength = 0;
+                for (var i = 0; i < $pages.length; i++) {
+                    var $page = $($pages[i]);
+                    var thisPageNum = _.find($page.context.className.split(' ')[1].split('-'), function(e) {
+                        return !isNaN(e);
+                    });
+                    if (thisPageNum.toString()[0] === sectionID) {
+                        ++sectionPagesLength
+                    }
+                }
+                // last page in section
+                var targetIndex = sectionPagesLength < 10 ? "0" + sectionPagesLength.toString() : sectionPagesLength.toString();
+                var nextPage = parseInt(sectionID.toString() + targetIndex) - 1;
+            } else {
+                var nextPage = parseInt(currentPageNum) - 1
+            }
+            gotoPage = nextPage;
         }
         // Fetch target pages' index & assign as currentPageIndex
         for (var i = 0; i < $pages.length; i++) {
@@ -451,11 +486,11 @@ var PageTransitions = (function () {
 
     function updateVisibility($pageTrigger) {
         var goToPage = parseInt($pageTrigger.data('goto'));
-        if (goToPage === 1) {
+        if (goToPage === 001) {
             landingVisbility();
-        } else if (goToPage === 10 || goToPage === 20) {
+        } else if (goToPage === 100 || goToPage === 200) {
             scrollingVisibility('vertical', goToPage);
-        } else if (goToPage === 30) {
+        } else if (goToPage === 300) {
             scrollingVisibility('horizontal', goToPage);
         }
     }
@@ -476,7 +511,7 @@ var PageTransitions = (function () {
                     changeVisibility(this, 'visible');
                 }
             } else if (indicator === 'home') {
-                var homeIsLeft = goToPage < 20;
+                var homeIsLeft = goToPage < 200;
                 if ((isVertical) &&
                     ((homeIsLeft && direction === 'left') || (!homeIsLeft && direction === 'right'))
                     || (!isVertical && direction === 'top')) {
