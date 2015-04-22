@@ -127,6 +127,9 @@
 .pt-trigger-container .arrow-buttons .down img {
   transform: rotate(180deg);
 }
+.pt-trigger-container .arrow-buttons .down.next {
+  top: 80%;
+}
 .pt-trigger-container .arrow-buttons .next,
 .pt-trigger-container .arrow-buttons .prev,
 .pt-trigger-container .arrow-buttons .home {
