@@ -5,7 +5,7 @@ Django settings for personal_blog project.
 
 import os
 import socket
-DEBUG = True if socket.gethostname() == '192.168.1.2' or socket.gethostname() == 'Lucass-MBP' else True
+DEBUG = False if socket.gethostname() == '192.168.1.2' or socket.gethostname() == 'Lucass-MBP' else True
 
 if DEBUG:  # not-production
     PROJECT_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -25,6 +25,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django_extensions',
     'base',
+    'home',
 )
 
 MIDDLEWARE_CLASSES = (
