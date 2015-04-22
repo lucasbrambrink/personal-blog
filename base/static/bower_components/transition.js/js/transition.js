@@ -39,6 +39,7 @@ var PageTransitions = (function () {
         // Adding click event to .pt-trigger
         $('.pt-trigger').click(function() {
             $pageTrigger = $(this);
+            //console.log($('.pt-page-current').className);
             Animate($pageTrigger);
             updateVisibility($pageTrigger);
         });
@@ -355,20 +356,22 @@ var PageTransitions = (function () {
             endCurrentPage = false,
             endNextPage = false;
 
+        var triggerSection = $pageTrigger.data('section');
+
+        // select Pages within section
+        var properPages = [];
+        for (var i = 0; i < $pages.length; i++) {
+            var page = $pages[i];
+            if ($(page).children('.' + triggerSection).length > 0) {
+                properPages.push(page)
+            }
+        }
+
         // Target
         gotoPage = parseInt($pageTrigger.data('goto'));
-        // Source
-        var sectionContext = $pageTrigger.data('section');
 
-        console.log($pageTrigger.data('section'));
-
-
-        var sourcePage = $pageTrigger.context.className
-        //console.log(sourcePage)
-        //console.log($pages)
-        //console.log(currentPageIndex)
-        //console.log($pages.eq(currentPageIndex));
-
+        var sourcePage = $('pt-page-current').context.className;
+        console.log(sourcePage);
 
         tempPageIndex = currentPageIndex;
 
@@ -381,6 +384,8 @@ var PageTransitions = (function () {
 
         // Current page to be removed.
         var $currentPage = $pages.eq(currentPageIndex);
+
+        console.log($pageTrigger.context.className)
 
         // Checking gotoPage value and decide what to do
         // -1 Go to next page
@@ -511,7 +516,6 @@ var PageTransitions = (function () {
         $('.pt-trigger').each(function(){
             var indicator = this.className.split(' ')[1];
             var visibility = indicator === 'base' ? 'visible' : 'hidden';
-            console.log(indicator, visibility);
             changeVisibility(this, visibility)
         });
     }
