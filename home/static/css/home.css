@@ -212,6 +212,27 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+.pt-page-200 .page-content div {
+  position: fixed;
+}
+.pt-page-200 .page-content .quote {
+  top: 70%;
+  right: 15%;
+  width: 20%;
+  text-align: right;
+}
+.pt-page-200 .page-content .quote p {
+  color: #fff;
+  font-family: 'Shift', sans-serif;
+}
+.pt-page-200 .page-content .quote p:nth-child(1) {
+  text-style: italic;
+  font-size: 115%;
+}
+.pt-page-200 .page-content .quote p:nth-child(2) {
+  margin-top: 2em;
+  font-size: 125%;
+}
 .pt-page-201 {
   background-image: url('http://i.imgur.com/w43EJU5.jpg');
   background-repeat: no-repeat;

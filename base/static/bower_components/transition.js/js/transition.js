@@ -388,7 +388,7 @@ var PageTransitions = (function () {
                 thisIndex = nextPage.toString().slice(1),
                 sectionOrigin = parseInt(sectionID.toString() + "00");
 
-            // select Pages within section
+            // count number of Pages within section
             var sectionPagesLength = 0;
             for (var i = 0; i < $pages.length; i++) {
                 var $page = $($pages[i]);

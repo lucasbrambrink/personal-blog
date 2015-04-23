@@ -82,9 +82,17 @@
 }
 
 .pt-page-200 {
-    background-image: url('http://i.imgur.com/HmNQoFA.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-image: url('http://i.imgur.com/HmNQoFA.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  .page-content {
+    div { position: fixed; }
+    .quote { top: 70%; right: 15%; width: 20%; text-align: right;
+      p { color: #fff; font-family: 'Shift', sans-serif; }
+      p:nth-child(1) { text-style: italic; font-size: 115%; }
+      p:nth-child(2) { margin-top: 2em; font-size: 125%; }
+    }
+  }
 }
 
 .pt-page-201 {
