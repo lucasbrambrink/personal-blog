@@ -283,3 +283,9 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+.pt-page-300 .page-content {
+  position: fixed;
+  top: 75%;
+  left: 10%;
+  width: 40%;
+}

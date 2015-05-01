@@ -73,9 +73,60 @@ def algorithm_container():
             )
 
 
+    list_comp = [x for x in range(10) if x % 2 == 0]
+
+    # same as
+    list_comp = []
+    for x in range(10):
+        if x % 2 == 0:
+            list_comp.append(x)
+
+
+    # generators
+    summation = sum(x for x in range(10) if x % 2 == 0)
+
+
+    # ternary operators
+
+
+    # dealing with ranges
+    if 0 < a < 10:
+        pass
+
+## suppose we only need to read this once
+def square_map_generator(max):
+    for x in range(max + 1):
+        square = x ** 2
+        if square <= max:
+            yield square
+
+
+
+def build_square_map(max):
+    map = []
+    for x in range(max + 1):
+        square = x ** 2
+        if square <= max:
+            map.append(square)
+        else:
+            break
+    return map
+
+def double_squares(number):
+    double_squares_found = []
+    SQUARES_MAP = build_square_map(max=number)
+    for square in reversed(SQUARES_MAP):
+        step_one = number - square
+        for next_square in SQUARES_MAP:
+            step_two = step_one - next_square
+            if step_two == 0:
+                pair = (square, next_square)
+                if pair not in double_squares_found and pair[::-1] not in double_squares_found:
+                    double_squares_found.append(pair)
+    return len(double_squares_found)
 
 if __name__ == "__main__":
     with open(sys.argv[1], 'r') as test_cases:
-        for test in test_cases.read().splitlines():
+        for test in test_cases.read().splitlines()[1:]:
             if len(test):
-                print nth_fibonacci(n=int(test))
+                print double_squares(int(test))
