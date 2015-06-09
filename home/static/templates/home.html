@@ -69,12 +69,23 @@
         {#  ALGORITHMS PAGES 10 - 19  #}
         <div class="pt-page pt-page-100">
             <div class="page-content algo">
-                <h3 class="header">Algorithms</h3>
+                <h1 class="main-header">Algorithms</h1>
 
                 <div class="blurb">
-                    <p>There is no better way to learn programming than by working on algorithm challenges.
-                        They stimulate our problem solving abilities, and through the rewards of developing ever more
-                        elegant solutions bear great fruit to the quality of our code.</p>
+                    <p>
+                        Let's face it: algorithm challenges are fun. Beyond their utility as programmatic excercises,
+                        they sharpen our problem solving abilities. It is often said that problem solving is the main ingredient to successful
+                        software development.
+                        <br>"We should be solving problems, not building features. Features are attributes, not objectives."
+                    </p>
+                    <p>
+                        As such, algorithm challenges force us to:
+                    </p>
+                        <ol class="numbered-list">
+                            <li>Figure out <i>exactly</i> what components need to be addressed. Knowing this alone is invaluable.</li>
+                            <li>Think about how the ideal solution would behave.</li>
+                            <li>Iterate! Build with purpose, and fail quickly.</li>
+                        </ol>
                 </div>
 
                 <div class="quote">
@@ -93,34 +104,63 @@
 
         <div class="pt-page pt-page-101">
             <div class="page-content algo">
-                <h3>List Comprehensions</h3>
-                <p>Any python developer should be decidedly familiar with proper list comprehesions.
-                   What makes them remarkable is that the programmer begins to think about iterables
-                    as objects to be passed around and used.
-
-
-                 <h3>Generators</h3>
-                <p>Sometimes, we want to consume an iterable immediately, without needing to
-                    make use of it again. In this case, generators are rather perfectly suited for the job.
-
+                <h1 class="main-header">Project Euler</h1>
+                <p>
+                    There are many sources online for fun and quick algorithm challenges to get our code-juices flowing
+                    and keep our CPUs busy (ex. codeeval.org and coderbyte.com). These are fine -- indeed, they form the foundation of my
+                    programming career, and as such I have a deep admiration for them. I remember my first is_prime_number(num), and running through the apartment
+                    late at night when all my assert statements passed. From that point on I was hooked on programming!
                 </p>
-                <p>'aaabbd' becomes 'a 3 b 2 d 1'</p>
-                <p>'1 1 1 3 3 3 4 4 4 4 4' becomes '1 3 3 3 4 5'</p>
-                <div class="algo">
-                    <img src="{% static 'home/images/reduce_and_count.png' %}"/>
-                </div>
-                <p>It would be fun to do this recursively. Let's go through the array, enumerating our aggregator
-                with each step, and stop when the symbol changes. We can return, in a tuple, the rest of the array,
-                the final count of our aggregator variable, and the symbol we were inspecting.</p>
+                <p>
+                    However, I want to point out that Project Euler is slightly different from most other, perhaps more popular sources.
+                    Most PE problem <b>cannot be solved by brute force.</b> This constraint alone is so significant to our approach
+                    that one has no choice but to earnestly <i>think about the problem</i>.
+                </p>
+                <p>
+                    From their website (projecteuler.net):
+                </p>
+                <p class="indented">
+                    "Project Euler is a series of challenging mathematical/computer programming problems that will require more than just mathematical insights to solve. Although mathematics will help you arrive at elegant and efficient methods, the use of a computer and programming skills will be required to solve most problems."
+                </p>
+                <p>
+                    “If I had an hour to solve a problem I'd spend 55 minutes thinking about the problem and 5 minutes thinking about solutions.”
+                    <br>-- Albert Einstein
+                </p>
+                <p>
+                    Intruiged? Let's jump right in!
+                </p>
+
             </div>
         </div>
 
         <div class="pt-page pt-page-102">
             <div class="page-content algo">
-                <h3>ALGORITHM 2</h3>
-                <div>
-                    <img src="{% static 'home/images/convert_from_hex.png' %}"/>
-                </div>
+                <h1>Large Sum (Problem 13)</h1>
+                <p>
+                    "Work out the sum of the following one-hundred 50-digit numbers."<br>
+                </p>
+                <p class="numbers">
+                    37107287533902102798797998220837590246510135740250<br>
+                    46376937677490009712648124896970078050417018260538<br>
+                    74324986199524741059474233309513058123726617309629<br>
+                    etc.
+                </p>
+
+                <p>
+                    A fifty digit number, 10E50, is much larger than a conventional <i>int</i> (maximum value 2^63 - 1,
+                    which is ~10E20). Summing about 100 of these numbers puts our answer in the 10E52 range, and, while
+                    Python could perhaps handle such a number (as a <i>long</i>), let's do this analytically. What if
+                    we had to multiply these numbers?
+                </p>
+                <p>
+                    How could we do this? Well, let's do it the same way that we learning summation in elementary school.
+                    We work backwards, digit by digit, and carry the one! Except in this case, our remainder is much, much larger than 1...
+                </p>
+                <p>
+                    One could make the argument here that a purely functional approach might be better suited for this problem,
+                    but since I like object-oriented programming I will use it for this example.
+
+                </p>
             </div>
         </div>
 
@@ -212,16 +252,34 @@
             </div>
         </div>
 
+        <div class="pt-page pt-page-210">
+            <div class="page-content">
+                <h3></h3>
+                <div></div>
+            </div>
+        </div>
+
+        <div class="pt-page pt-page-211">
+            <div class="page-content">
+                <h3></h3>
+                <div></div>
+            </div>
+        </div>
+
 
         {#  PERSONAL STUFF  #}
         <div class="pt-page pt-page-300">
             <div class="page-content">
                 <h3>Personal</h3>
-                <p>Born in Wiesbaden, Germany. Moved to Portland OR age 14.
-                    Studied Neuroscience and Philosophy Johns Hopkins University in Baltimore,
-                  MD (2008-2012). Did Post-bacc work in physics at University of Oregon.
-                Attended Byte Academy, financial coding bootcamp in NYC. Worked professionally in
-                Python for a year.</p>
+                <p>
+                    I was born in Wiesbaden, Germany, and moved to Portland, OR at age 14.
+                    I studied Neuroscience and Philosophy at Johns Hopkins University in Baltimore, MD (2008-2012), and completed Post-bacc work in Physics at University of Oregon.
+                    After attending Byte Academy, a full-stack coding bootcamp in NYC, I started working as a
+                    junior python dev at a NYC-based start-up. I currently work for a hiring consultant firm as a software developer.
+                </p>
+                <p>
+                    When I'm not writing code, I enjoy hiking, playing the piano, running, reading, cooking and gardening.
+                </p>
             </div>
         </div>
 

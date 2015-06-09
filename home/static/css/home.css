@@ -175,7 +175,7 @@
 .pt-page-102,
 .pt-page-103,
 .pt-page-104 {
-  background-image: url('../images/algo-background.jpg');
+  background-color: black;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -186,23 +186,49 @@
   left: 15%;
   top: 12%;
   padding: 1em;
-  width: 60%;
+  width: 70%;
   font-size: 120%;
 }
-.pt-page-100 .page-content .header {
-  text-align: center;
+.pt-page-100 .page-content .main-header {
+  text-align: left;
   margin-bottom: 2em;
 }
 .pt-page-100 .page-content .blurb {
-  width: 60%;
+  width: 100%;
 }
 .pt-page-100 .page-content .quote {
   margin-top: 3em;
-  margin-left: 10em;
-  font-style: italic;
-  font-size: 130%;
+  font-size: 120%;
 }
 .pt-page-100 .page-content .quote .name {
+  margin-left: 6em;
+  font-style: normal;
+  font-weight: bold;
+}
+.pt-page-101 {
+  font-family: 'Shift', sans-serif;
+}
+.pt-page-101 .page-content {
+  left: 15%;
+  top: 8%;
+  padding: 1em;
+  width: 70%;
+  font-size: 120%;
+}
+.pt-page-101 .page-content .main-header {
+  text-align: left;
+}
+.pt-page-101 .page-content p {
+  margin-top: 25px;
+}
+.pt-page-101 .page-content .indented {
+  padding: 0 50px 0 50px;
+}
+.pt-page-101 .page-content .quote {
+  margin-top: 3em;
+  font-size: 120%;
+}
+.pt-page-101 .page-content .quote .name {
   margin-left: 6em;
   font-style: normal;
   font-weight: bold;
@@ -278,6 +304,16 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+.pt-page-210 {
+  background-image: url('http://i.imgur.com/ruMWUB5.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.pt-page-211 {
+  background-image: url('http://i.imgur.com/tu3Sudj.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .pt-page-300 {
   background-image: url('http://i.imgur.com/3Eu79zO.jpg');
   background-repeat: no-repeat;
@@ -285,7 +321,7 @@
 }
 .pt-page-300 .page-content {
   position: fixed;
-  top: 75%;
+  top: 70%;
   left: 10%;
   width: 40%;
 }

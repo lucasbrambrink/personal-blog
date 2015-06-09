@@ -506,8 +506,8 @@ var PageTransitions = (function () {
             var direction = this.className.split(' ')[0];
             var indicator = this.className.split(' ')[1];
             if (indicator === 'next' || indicator === 'prev') {
-                if ((!isVertical && (direction === 'right' || direction === 'left'))
-                ||  (isVertical && (direction === 'top' || direction === 'down'))) {
+                // if ((!isVertical && (direction === 'right' || direction === 'left'))
+                if ((isVertical && (direction === 'top' || direction === 'down'))) {
                     changeVisibility(this, 'visible');
                 }
             } else if (indicator === 'home') {
