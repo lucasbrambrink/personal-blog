@@ -67,8 +67,8 @@
 
 
         {#  ALGORITHMS PAGES 10 - 19  #}
-        <div class="pt-page pt-page-100">
-            <div class="page-content algo">
+        <div class="pt-page pt-page-100 algo">
+            <div class="page-content">
                 <h1 class="main-header">Algorithms</h1>
 
                 <div class="blurb">
@@ -101,83 +101,51 @@
             </div>
         </div>
 
-
-        <div class="pt-page pt-page-101">
-            <div class="page-content algo">
-                <h1 class="main-header">Project Euler</h1>
-                <p>
-                    There are many sources online for fun and quick algorithm challenges to get our code-juices flowing
-                    and keep our CPUs busy (ex. codeeval.org and coderbyte.com). These are fine -- indeed, they form the foundation of my
-                    programming career, and as such I have a deep admiration for them. I remember my first is_prime_number(num), and running through the apartment
-                    late at night when all my assert statements passed. From that point on I was hooked on programming!
-                </p>
-                <p>
-                    However, I want to point out that Project Euler is slightly different from most other, perhaps more popular sources.
-                    Most PE problem <b>cannot be solved by brute force.</b> This constraint alone is so significant to our approach
-                    that one has no choice but to earnestly <i>think about the problem</i>.
-                </p>
-                <p>
-                    From their website (projecteuler.net):
-                </p>
-                <p class="indented">
-                    "Project Euler is a series of challenging mathematical/computer programming problems that will require more than just mathematical insights to solve. Although mathematics will help you arrive at elegant and efficient methods, the use of a computer and programming skills will be required to solve most problems."
-                </p>
-                <p>
-                    “If I had an hour to solve a problem I'd spend 55 minutes thinking about the problem and 5 minutes thinking about solutions.”
-                    <br>-- Albert Einstein
-                </p>
-                <p>
-                    Intruiged? Let's jump right in!
-                </p>
-
-            </div>
-        </div>
-
-        <div class="pt-page pt-page-102">
-            <div class="page-content algo">
-                <h1>Large Sum (Problem 13)</h1>
-                <p>
-                    "Work out the sum of the following one-hundred 50-digit numbers."<br>
-                </p>
-                <p class="numbers">
-                    37107287533902102798797998220837590246510135740250<br>
-                    46376937677490009712648124896970078050417018260538<br>
-                    74324986199524741059474233309513058123726617309629<br>
-                    etc.
-                </p>
-
-                <p>
-                    A fifty digit number, 10E50, is much larger than a conventional <i>int</i> (maximum value 2^63 - 1,
-                    which is ~10E20). Summing about 100 of these numbers puts our answer in the 10E52 range, and, while
-                    Python could perhaps handle such a number (as a <i>long</i>), let's do this analytically. What if
-                    we had to multiply these numbers?
-                </p>
-                <p>
-                    How could we do this? Well, let's do it the same way that we learning summation in elementary school.
-                    We work backwards, digit by digit, and carry the one! Except in this case, our remainder is much, much larger than 1...
-                </p>
-                <p>
-                    One could make the argument here that a purely functional approach might be better suited for this problem,
-                    but since I like object-oriented programming I will use it for this example.
-
-                </p>
-            </div>
-        </div>
-
-        <div class="pt-page pt-page-103">
-            <div class="page-content algo">
-                <h3>ALGORITHM 3</h3>
+        <div class="pt-page pt-page-101 algo">
+            <div class="page-content">
                 <div>
-                    <img src="{% static 'home/images/fibonacci.png' %}"/>
+                    <img src="{% static 'home/images/algo_intro.png' %}"/>
                 </div>
             </div>
         </div>
 
-        <div class="pt-page pt-page-104">
-            <div class="page-content algo">
-                <h3>ALGORITHM 4</h3>
+
+        <div class="pt-page pt-page-102 algo">
+            <div class="page-content">
                 <div>
-                    <img src="{% static 'home/images/happy_numbers.png' %}"/>
+                    <img src="{% static 'home/images/pe_intro.png' %}"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="pt-page pt-page-103 algo">
+            <div class="page-content">
+                <div>
+                    <img src="{% static 'home/images/large_sum_intro.png' %}"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="pt-page pt-page-104 algo">
+            <div class="page-content">
+                <div>
+                    <img src="{% static 'home/images/large_sum_2.png' %}"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="pt-page pt-page-105 algo">
+            <div class="page-content">
+                <div>
+                    <img src="{% static 'home/images/large_sum_3.png' %}"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="pt-page pt-page-106 algo">
+            <div class="page-content">
+                <div>
+                    <img src="{% static 'home/images/large_sum_4.png' %}"/>
                 </div>
             </div>
         </div>
