@@ -586,6 +586,127 @@ class ProjectEuler(object):
         # since we built our total backwards, we need to re-map it forwards
         return total[::-1]
 
+
+    def coin_sums(self):
+        """
+        In England the currency is made up of pound, £, and pence, p, and there are eight coins in general circulation:
+
+        1p, 2p, 5p, 10p, 20p, 50p, £1 (100p) and £2 (200p).
+        It is possible to make £2 in the following way:
+
+        1×£1 + 1×50p + 2×20p + 1×5p + 1×2p + 3×1p
+        How many different ways can £2 be made using any number of coins?
+        """
+        coins = [1, 2, 5, 10, 20, 50, 100, 200]
+        """
+        obviously, [1 * 200], [1 * 198, 2 * 1], [1 * 195, 5 * 1], etc
+        also [1 * 196, 2 * 2]
+
+        every number needs coefficient and value
+            sum = [a * 1, b * 2, c * 5, ..., k * 200]
+
+            note that the coefficient can be zero
+
+        we can zip two lists, one of coefficients
+        """
+        coefficients = [200, 0, 0, 0, 0, 0, 0, 0]
+        # this would yield sum == 200
+        """
+        max ranges are 200, 100, 40, 20, 10, 4, 2, 1
+        """
+        max_ranges = [200, 100, 40, 20, 10, 4, 2, 1]
+        """
+        now, would it not be great to know how many elements the set containing
+        all possible combinations of each of the coefficients 0 - 200 would be?
+        """
+        # that is the product of our max_ranges:
+        # >>> prod = 1
+        # >>> for r in max_ranges:
+        # >>>    prod *= r
+        # >>> 1280000000
+
+        # well, most of those don't add up to 200...
+        # so let's see how we can make sure they would
+
+        def high_or_below(list):
+            value = sum(coeff * coin for coeff, coin in zip(coefficients, coins))
+            if value < 200:
+                return -1
+            elif value > 200:
+                return 1
+            else:
+                return 0
+
+
+        """
+        perhaps a nice place to start would be
+          [0, 0, 0, 0, 0, 0, 0, 0]  :   0 : -1
+          [0, 0, 0, 0, 0, 0, 0, 1]  : 200 : 0
+
+          max range hit, set back to zero, increment next by 1
+
+          [0, 0, 0, 0, 0, 0, 1, 0]  : 100 : -1
+          [0, 0, 0, 0, 0, 1, 1, 0]  : 150 : -1
+          [0, 0, 0, 0, 1, 1, 1, 0]  : 170 : -1
+          [0, 0, 0, 1, 1, 1, 1, 0]  : 180 : -1
+          [0, 0, 1, 1, 1, 1, 1, 0]  : 185 : -1
+          [0, 1, 1, 1, 1, 1, 1, 0]  : 187 : -1
+          [1, 1, 1, 1, 1, 1, 1, 0]  : 188 : -1
+          [2, 1, 1, 1, 1, 1, 1, 0]  : 189 : -1
+          ...
+          [13, 1, 1, 1, 1, 1, 1, 0] : 200 : 0
+
+          increment next by 1, repeat
+          [0, 2, 1, 1, 1, 1, 1, 0]  : 189 : -1
+          [1, 2, 1, 1, 1, 1, 1, 0]  : 189 : -1
+          [2, 2, 1, 1, 1, 1, 1, 0]  : 189 : -1
+          [3, 2, 1, 1, 1, 1, 1, 0]  : 189 : -1
+          ...
+          [11, 2, 1, 1, 1, 1, 1, 0] : 200 : 0
+
+          increment by 1
+          [0, 3, 1, 1, 1, 1, 1, 0]  : 191 : -1
+          [1, 3, 1, 1, 1, 1, 1, 0]  : 192 : -1
+          ...
+          [9, 3, 1, 1, 1, 1, 1, 0]  : 192 : -1
+
+          this can be done with 2's until
+          [1, 7, 1, 1, 1, 1, 1, 0]  : 200 : 0
+          [0, 8, 1, 1, 1, 1, 1, 0]  : 201 : +1  << we stepped over!
+
+          so we move one over...
+          [0, 0, 2, 1, 1, 1, 1, 0]  : 190 : -1
+          [0, 1, 2, 1, 1, 1, 1, 0]  : 192 : -1
+          [1, 1, 2, 1, 1, 1, 1, 0]  : 193 : -1
+
+          etc. etc. etc
+          eventually we will get back to,
+          [0, 0, 0, 0, 0, 0, 2, 0]  : 200 : 0
+          max range reached, move over
+          [0, 0, 0, 0, 0, 1, 0, 0]
+
+          repeat this procedure, working from the left
+          ...until
+
+          [200, 0, 0, 0, 0, 0, 0, 0]
+          and we have iterated through every combination!
+
+        """
+        test = [0, 0, 0, 0, 0, 0, 0, 0]
+        for index in range(1, len(coins) + 1):
+            current_value = test[-index]
+            max_range = max_ranges[-index]
+            while current_value < max_range:
+                test[-index] += 1
+                result = high_or_below(test)
+                if result == -1:
+
+
+
+
+
+
+
 def stuff():
 
 

@@ -23,6 +23,15 @@
 .container {
   position: relative;
   top: 100px;
+  font-family: 'Roboto-Thin';
+}
+.container h1,
+.container h2,
+.container h3,
+.container h4,
+.container h5,
+.container h6 {
+  font-family: 'Roboto-Thin';
 }
 .container .header {
   text-align: center;
@@ -31,7 +40,7 @@
 .container .header h1 {
   color: #fff;
   font-size: 48px;
-  font-family: 'Shift', sans-serif;
+  font-family: 'Roboto-Thin', sans-serif;
   font-weight: bold;
 }
 .container .header p {
@@ -42,7 +51,7 @@
   background-color: #f7f7f7;
 }
 .learn-more h3 {
-  font-family: 'Shift', sans-serif;
+  font-family: 'Roboto-Thin', sans-serif;
   font-size: 18px;
   font-weight: bold;
 }
@@ -163,7 +172,7 @@
 .pt-page-001 .header h1 {
   color: #fff;
   font-size: 48px;
-  font-family: 'Shift', sans-serif;
+  font-family: 'Roboto-Thin', sans-serif;
   margin-bottom: 1em;
 }
 .pt-page-001 .header p {
@@ -187,7 +196,7 @@
   height: 90%;
 }
 .pt-page-100 {
-  font-family: 'Shift', sans-serif;
+  font-family: 'Roboto-Thin', sans-serif;
 }
 .pt-page-100 .page-content {
   left: 15%;
@@ -231,7 +240,7 @@
 }
 .pt-page-200 .page-content .quote p {
   color: #fff;
-  font-family: 'Shift', sans-serif;
+  font-family: 'Roboto-Thin', sans-serif;
 }
 .pt-page-200 .page-content .quote p:nth-child(1) {
   text-style: italic;
