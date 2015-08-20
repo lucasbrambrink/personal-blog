@@ -30,29 +30,30 @@
 
 .pt-trigger-container { width: 100%; height: 100%; filter: invert(100%); -webkit-filter: invert(100%);
   .arrow-buttons { box-shadow: none;
-    h1.transition-link { color: black; text-decoration:none; border-bottom: 3px solid rgba(0,0,0,0); transition: border-color 0.8s;}
-    h1.transition-link:hover { border-color: rgba(0,0,0,1); color: black; }
+    h1.transition-link { color: black; text-decoration:none; border-bottom: 1px solid rgba(0,0,0,0); transition: border-color 0.8s;}
+    .pt-trigger:hover { h1 { border-color: rgba(0,0,0,1); color: black; }}
     div { position: absolute; box-shadow: none; }
-    img { width: 150px; height: 100px; box-shadow: none; position: fixed; }
+    img { width: 15px; height: 50px; box-shadow: none; position: fixed; }
 
-    .top { top: -3%; margin-top: 1em; left: 45%; visibility: hidden;
+    .top { top: -5%; margin-top: 1em; left: 45%; visibility: hidden;
       h1.transition-link { margin: 0; margin-left: 0.9em; margin-top: 1.8em; }
-      img { top: -3%; }
-    }
-    .right { top: 40%; right: 110px;
-      .transition-link { top: 41%; right: 1.7em; position: fixed; }
-      img { transform: rotate(90deg); }
-    }
-    .left { top: 40%; left: -43px;
-      .transition-link { top: 41%; left: 1.7em; position: fixed; }
       img { transform: rotate(-90deg); }
+      img { top: 0%; left: 50%; }
     }
-    .down { top: 90%; left: 45%;
-      h1.transition-link { margin-left: 12px; padding: 0 0 0 0; position: fixed; top: 85%; }
-      img { transform: rotate(180deg);}
+    .right { top: 43%; right: 3%;
+      .transition-link { top: 41%; right: 1.7em; position: fixed; }
+    }
+    .left { top: 43%; left: 2%;
+      .transition-link { top: 41%; left: 1.7em; position: fixed; }
+      img { transform: rotate(180deg); }
+    }
+    .down { top: 93%; left: 50%;
+      h1.transition-link { margin-left: -57px; padding: 0 0 0 0; position: fixed; top: 85%; }
+      img { transform: rotate(90deg);}
     }
 //    .top.prev { top: -500px; }
-    .down.next { top: 90%; }
+    .down.next { top: 95%; }
+    .top.prev { img { top: -1%; left: 50%; } }
     .next, .prev, .home { visibility: hidden; }
   }
 }

@@ -70,10 +70,10 @@
 .pt-trigger-container .arrow-buttons h1.transition-link {
   color: black;
   text-decoration: none;
-  border-bottom: 3px solid rgba(0, 0, 0, 0);
+  border-bottom: 1px solid rgba(0, 0, 0, 0);
   transition: border-color 0.8s;
 }
-.pt-trigger-container .arrow-buttons h1.transition-link:hover {
+.pt-trigger-container .arrow-buttons .pt-trigger:hover h1 {
   border-color: #000000;
   color: black;
 }
@@ -82,13 +82,13 @@
   box-shadow: none;
 }
 .pt-trigger-container .arrow-buttons img {
-  width: 150px;
-  height: 100px;
+  width: 15px;
+  height: 50px;
   box-shadow: none;
   position: fixed;
 }
 .pt-trigger-container .arrow-buttons .top {
-  top: -3%;
+  top: -5%;
   margin-top: 1em;
   left: 45%;
   visibility: hidden;
@@ -99,23 +99,24 @@
   margin-top: 1.8em;
 }
 .pt-trigger-container .arrow-buttons .top img {
-  top: -3%;
+  transform: rotate(-90deg);
+}
+.pt-trigger-container .arrow-buttons .top img {
+  top: 0%;
+  left: 50%;
 }
 .pt-trigger-container .arrow-buttons .right {
-  top: 40%;
-  right: 110px;
+  top: 43%;
+  right: 3%;
 }
 .pt-trigger-container .arrow-buttons .right .transition-link {
   top: 41%;
   right: 1.7em;
   position: fixed;
 }
-.pt-trigger-container .arrow-buttons .right img {
-  transform: rotate(90deg);
-}
 .pt-trigger-container .arrow-buttons .left {
-  top: 40%;
-  left: -43px;
+  top: 43%;
+  left: 2%;
 }
 .pt-trigger-container .arrow-buttons .left .transition-link {
   top: 41%;
@@ -123,23 +124,27 @@
   position: fixed;
 }
 .pt-trigger-container .arrow-buttons .left img {
-  transform: rotate(-90deg);
+  transform: rotate(180deg);
 }
 .pt-trigger-container .arrow-buttons .down {
-  top: 90%;
-  left: 45%;
+  top: 93%;
+  left: 50%;
 }
 .pt-trigger-container .arrow-buttons .down h1.transition-link {
-  margin-left: 12px;
+  margin-left: -57px;
   padding: 0 0 0 0;
   position: fixed;
   top: 85%;
 }
 .pt-trigger-container .arrow-buttons .down img {
-  transform: rotate(180deg);
+  transform: rotate(90deg);
 }
 .pt-trigger-container .arrow-buttons .down.next {
-  top: 90%;
+  top: 95%;
+}
+.pt-trigger-container .arrow-buttons .top.prev img {
+  top: -1%;
+  left: 50%;
 }
 .pt-trigger-container .arrow-buttons .next,
 .pt-trigger-container .arrow-buttons .prev,
